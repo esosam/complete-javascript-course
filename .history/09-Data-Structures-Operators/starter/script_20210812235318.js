@@ -225,47 +225,17 @@ const capitalize = function (name) {
   return name.replace(name[0], name[0].toUpperCase());
 };
 
-const iconrepeat = function (n) {
-  return '✅'.repeat(n);
-};
-
-//my solution
-/*
 document.querySelector('button').addEventListener('click', function (e) {
   const text = document.querySelector('textarea').value;
   //console.log(text);
 
   const data = text.split('\n');
   //console.log(data);
-  var i = 1;
 
   for (const d of data) {
     //console.log(d.trim());
+
     const namearr = d.split('_');
-    const output = `${namearr[0].trim()}${capitalize(
-      namearr[1].toLowerCase().trim()
-    )}`;
-
-    console.log(`${output.padEnd(20)}${iconrepeat(i)}`);
-
-    i++;
-  }
-});
-*/
-
-document.querySelector('button').addEventListener('click', function (e) {
-  const text = document.querySelector('textarea').value;
-
-  const data = text.split('\n');
-
-  for (const [i, names] of data.entries()) {
-    const [first, second] = names.split('_');
-
-    const output = `${first.toLowerCase().trim()}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-
-    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+    console.log(`${namearr[0].trim()}${capitalize(namearr[1].toLowerCase())}`);
   }
 });

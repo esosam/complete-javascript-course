@@ -151,7 +151,7 @@ first half or second half (after 45 min) of the game, like this:
 
 GOOD LUCK 😀
 */
-/*
+
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
   [36, '🔁 Substitution'],
@@ -166,106 +166,5 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
-const events = [...new Set(gameEvents.values())];
+const events = [new Set(...gameEvents)];
 console.log(events);
-
-gameEvents.delete(64);
-console.log(gameEvents);
-
-const time = [...gameEvents.keys()].pop();
-
-console.log(
-  `An event happened, on average, every ${time / gameEvents.size} minutes`
-);
-
-for (const [min, value] of gameEvents) {
-  const halftime = min <= 45 ? 'FIRST' : 'SECOND';
-
-  console.log(`[${halftime} HALF] minute: ${min} ${value}`);
-  //[FIRST HALF] 17: ⚽️ GOAL
-}
-*/
-
-///////////////////////////////////////
-// Coding Challenge #4
-
-/* 
-Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
-
-The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
-
-THIS TEST DATA (pasted to textarea)
-underscore_case
- first_name
-Some_Variable 
-  calculate_AGE
-delayed_departure
-
-SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
-underscoreCase      ✅
-firstName           ✅✅
-someVariable        ✅✅✅
-calculateAge        ✅✅✅✅
-delayedDeparture    ✅✅✅✅✅
-
-HINT 1: Remember which character defines a new line in the textarea 😉
-HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
-HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
-HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
-
-Afterwards, test with your own test data!
-
-GOOD LUCK 😀
-*/
-
-document.body.append(document.createElement('textarea'));
-document.body.append(document.createElement('button'));
-
-const capitalize = function (name) {
-  return name.replace(name[0], name[0].toUpperCase());
-};
-
-const iconrepeat = function (n) {
-  return '✅'.repeat(n);
-};
-
-//my solution
-/*
-document.querySelector('button').addEventListener('click', function (e) {
-  const text = document.querySelector('textarea').value;
-  //console.log(text);
-
-  const data = text.split('\n');
-  //console.log(data);
-  var i = 1;
-
-  for (const d of data) {
-    //console.log(d.trim());
-    const namearr = d.split('_');
-    const output = `${namearr[0].trim()}${capitalize(
-      namearr[1].toLowerCase().trim()
-    )}`;
-
-    console.log(`${output.padEnd(20)}${iconrepeat(i)}`);
-
-    i++;
-  }
-});
-*/
-
-document.querySelector('button').addEventListener('click', function (e) {
-  const text = document.querySelector('textarea').value;
-
-  const data = text.split('\n');
-
-  for (const [i, names] of data.entries()) {
-    const [first, second] = names.split('_');
-
-    const output = `${first.toLowerCase().trim()}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-
-    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
-  }
-});

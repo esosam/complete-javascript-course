@@ -258,14 +258,11 @@ document.querySelector('button').addEventListener('click', function (e) {
 
   const data = text.split('\n');
 
-  for (const [i, names] of data.entries()) {
+  for (const [i, names] of data.entries) {
     const [first, second] = names.split('_');
 
-    const output = `${first.toLowerCase().trim()}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
+    const output = `${first}`;
 
-    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+    console.log(output);
   }
 });

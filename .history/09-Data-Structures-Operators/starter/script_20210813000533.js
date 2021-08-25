@@ -229,8 +229,6 @@ const iconrepeat = function (n) {
   return '✅'.repeat(n);
 };
 
-//my solution
-/*
 document.querySelector('button').addEventListener('click', function (e) {
   const text = document.querySelector('textarea').value;
   //console.log(text);
@@ -246,26 +244,8 @@ document.querySelector('button').addEventListener('click', function (e) {
       namearr[1].toLowerCase().trim()
     )}`;
 
-    console.log(`${output.padEnd(20)}${iconrepeat(i)}`);
+    console.log(`${output.padEnd(20)}`);
 
     i++;
-  }
-});
-*/
-
-document.querySelector('button').addEventListener('click', function (e) {
-  const text = document.querySelector('textarea').value;
-
-  const data = text.split('\n');
-
-  for (const [i, names] of data.entries()) {
-    const [first, second] = names.split('_');
-
-    const output = `${first.toLowerCase().trim()}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-
-    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
   }
 });

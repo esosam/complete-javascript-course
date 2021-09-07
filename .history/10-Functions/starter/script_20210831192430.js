@@ -59,8 +59,6 @@ const poll = {
         option >= 0 && option <= this.options.length
         && this.answers[option]++;
         
-        this.displayResults();
-        this.displayResults('string');
     }    ,
 
     displayResults(type = 'array') {

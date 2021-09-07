@@ -52,26 +52,20 @@ const poll = {
     answers: new Array(4).fill(0),
 
     registerNewAnswer() {
-
         const option = Number ( prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`) );        
 
-        typeof(option) === 'number' && 
-        option >= 0 && option <= this.options.length
-        && this.answers[option]++;
-        
-        this.displayResults();
-        this.displayResults('string');
-    }    ,
+        if(typeof(option) === 'number' && option >= 0 && option <= 3){
 
-    displayResults(type = 'array') {
-        if (type === 'array') { console.log(this.answers) }
-        else if (type === 'string') { console.log(`Poll results are ${this.answers.join(', ')}`) };        
-    }
+            console.log('nice');
+            this.answers[option]++;
 
+        }else{
+
+            console.log('not nice');
+
+        }
+    }    
 };
 
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+console.log(poll.registerNewAnswer());
 
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });

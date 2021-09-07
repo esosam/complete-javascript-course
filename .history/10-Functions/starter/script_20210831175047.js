@@ -39,9 +39,9 @@ BONUS: Use the 'displayResults' method to display the 2 arrays in the test data.
 Use both the 'array' and the 'string' option. Do NOT put the arrays in the poll object! 
 So what should the this keyword look like in this situation?
 
-BONUS TEST DATA 1: [5, 2, 3]3
+BONUS TEST DATA 1: [5, 2, 3]
 BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
-a
+
 GOOD LUCK 😀
 */
 
@@ -52,26 +52,11 @@ const poll = {
     answers: new Array(4).fill(0),
 
     registerNewAnswer() {
-
-        const option = Number ( prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`) );        
-
-        typeof(option) === 'number' && 
-        option >= 0 && option <= this.options.length
-        && this.answers[option]++;
-        
-        this.displayResults();
-        this.displayResults('string');
-    }    ,
-
-    displayResults(type = 'array') {
-        if (type === 'array') { console.log(this.answers) }
-        else if (type === 'string') { console.log(`Poll results are ${this.answers.join(', ')}`) };        
+        const option = prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`);
     }
-
 };
 
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+const TestPoll = poll;
 
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+console.log(TestPoll.registerNewAnswer());
+

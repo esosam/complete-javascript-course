@@ -59,11 +59,10 @@ const poll = {
         option >= 0 && option <= this.options.length
         && this.answers[option]++;
         
-        this.displayResults();
-        this.displayResults('string');
     }    ,
 
-    displayResults(type = 'array') {
+    displayResults(type){
+
         if (type === 'array') { console.log(this.answers) }
         else if (type === 'string') { console.log(`Poll results are ${this.answers.join(', ')}`) };        
     }
@@ -71,7 +70,3 @@ const poll = {
 };
 
 document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
-
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
